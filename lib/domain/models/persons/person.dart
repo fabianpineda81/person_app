@@ -1,5 +1,5 @@
 class Person {
-  final String? id;                    // Identificador único interno
+  final String id;                    // Identificador único interno
   final String firstName;            // Primer nombre
   final String? middleName;          // Segundo nombre (opcional)
   final String lastName;             // Primer apellido
@@ -10,7 +10,7 @@ class Person {
   final String address;              // Dirección
 
   Person({
-     this.id,
+    required this.id,
     required this.firstName,
     this.middleName,
     required this.lastName,

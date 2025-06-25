@@ -5,6 +5,7 @@ import 'package:app_personas/domain/use_cases/person/add_person.dart';
 import 'package:app_personas/domain/use_cases/person/update_person.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:uuid/uuid.dart';
 
 import 'person_form_state.dart';
 
@@ -86,9 +87,9 @@ class PersonFormNotifier extends StateNotifier<PersonFormState> {
     if (!state.isValid || state.isSubmitting) return false ;
 
     state = state.copyWith(isSubmitting: true);
-
+    final Uuid uuid = const Uuid();
     final person = Person(
-      id: editingId,
+      id: editingId??uuid.v4() ,
       firstName: state.firstName,
       middleName: state.middleName,
       lastName: state.lastName,
@@ -104,7 +105,7 @@ class PersonFormNotifier extends StateNotifier<PersonFormState> {
       await _update.execute(person);
     }
 
-    personListNotifier.loadPersons();
+    await personListNotifier.loadPersons();
     state = PersonFormState();
     return true;
   }

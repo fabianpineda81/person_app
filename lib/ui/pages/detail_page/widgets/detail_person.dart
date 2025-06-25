@@ -45,7 +45,7 @@ class DetailPerson extends ConsumerWidget {
                   onPressed:() async {
                       final result=  await showConfirmDeleteDialog(context);
                       if(result){
-                        ref.read(personDetailProvider.notifier).deletePerson(person.id!);
+                        await ref.read(personDetailProvider.notifier).deletePerson(person.id);
                         if (context.mounted) Navigator.pop(context);
                       }
                   },

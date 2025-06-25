@@ -14,7 +14,7 @@ class PersonDetailNotifier extends StateNotifier<bool> {
   Future<void> deletePerson(String id) async {
     state=true;
     await _delete.execute(id);
-    personListNotifier.loadPersons();
+    await personListNotifier.loadPersons();
     state=false;
   }
   Future<Person?> getPersonById(String id) async {
