@@ -71,6 +71,8 @@ final personRepositoryProvider = Provider<PersonGateway>((ref) {
   return PersonInMemoryRepository(); // usar este para pruebas
   // return PersonIsarRepository(); // usar este para persistencia real
 });
+```
+
 en lib/config/providers/person_repository_provider.dart  
 Esto permite cambiar la fuente de datos sin afectar el resto de la app
 
